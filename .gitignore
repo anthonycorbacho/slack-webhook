@@ -4,7 +4,8 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Emacs
+# IDE
 *~
 \#*\#
 .\#*
+.idea
