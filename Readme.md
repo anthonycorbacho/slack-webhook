@@ -1,4 +1,4 @@
-## Slack webhook
+## Slack webhook <a href="https://goreportcard.com/report/github.com/anthonycorbacho/slack-webhook"><img src="https://goreportcard.com/badge/github.com/anthonycorbacho/slack-webhook" /></a>
 
 **Slack webhook** is a simple library that allows application to seamlessly send Slack Message by using the Incoming Webhooks API from Slack.
 
