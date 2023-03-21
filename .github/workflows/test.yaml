@@ -1,4 +1,4 @@
-name: Kit framework Unit test
+name: Slack Webhook Unit Test
 on:
   pull_request:
     types: [ opened, synchronize ]
