@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-// Send send message (Payload) to the given slack hook URL.
+// Send sends message (Payload) to the given slack hook URL.
 func Send(hookURL string, message Message) error {
 	bts, err := json.Marshal(message)
 	if err != nil {
@@ -40,7 +40,7 @@ func Send(hookURL string, message Message) error {
 	return nil
 }
 
-// Message contains the slack message.
+// Message represent a Slack message.
 type Message struct {
 	Parse       string       `json:"parse,omitempty"`
 	Username    string       `json:"username,omitempty"`
