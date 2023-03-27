@@ -33,7 +33,7 @@ func testHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Test_slack(t *testing.T) {
+func TestSlack(t *testing.T) {
 	srv := httptest.NewServer(handler())
 	defer srv.Close()
 
