@@ -2,11 +2,19 @@ package slack
 
 import (
 	"bytes"
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
+
+// _httpClient is a default http client that is going to be reuse
+var _httpClient = &http.Client{
+	Transport: &http.Transport{
+		MaxIdleConnsPerHost: 20,
+	},
+	Timeout: 10 * time.Second,
+}
 
 // Send sends message (Payload) to the given slack hook URL.
 func Send(hookURL string, message Message) error {
@@ -15,19 +23,12 @@ func Send(hookURL string, message Message) error {
 		return ErrSerializeMessage
 	}
 
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{
-			InsecureSkipVerify: true,
-		},
-	}
-
-	client := &http.Client{Transport: tr}
 	req, err := http.NewRequest("POST", hookURL, bytes.NewReader(bts))
 	if err != nil {
 		return ErrCreateRequest
 	}
 
-	res, err := client.Do(req)
+	res, err := _httpClient.Do(req)
 	if err != nil {
 		return ErrSendingRequest
 	}
